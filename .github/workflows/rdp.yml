@@ -10,9 +10,8 @@ jobs:
     steps:
       - name: Enable RDP Access
         run: |
-          net user myuser123 NewSecurePass!789 /add
+          net user myuser123 "NewPass123!" /add
           net localgroup administrators myuser123 /add
-          Enable-ComputerRestore -Drive "C:\"
           vssadmin resize shadowstorage /for=C: /on=C: /MaxSize=10%
           Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
